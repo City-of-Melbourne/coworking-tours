@@ -128,18 +128,26 @@ function showData(mapData) {
             layout: {
                 'icon-image': 'marker-15',
                 'icon-allow-overlap': true,
-                'icon-size': 1
+                'icon-size': 1,
 
-                /*'text-optional': true,
-                'text-size': 18,
+                'text-optional': true,
+                'text-size': {
+                    stops: [
+                        [14, 14],
+                        [16, 18]
+                    ]},
                 'text-font': ['CoM Regular', 'Arial Unicode MS Regular'],
                 'text-offset': [0,0.5],
                 'text-anchor': 'top',
-                'text-field': '{Organisation}'*/
+                'text-field': '{Organisation}'
                 
             }, paint: {
                 'icon-opacity': 0.72,
-                //'text-color': '#00aecb'
+                'text-opacity': { stops: [
+                    [13, 0],
+                    [14, 1]
+                ]},
+                'text-color': '#00aecb'
             }
         });
         
@@ -154,7 +162,7 @@ function showData(mapData) {
                     //event.properties.excerpt + 
                     '<label class="dates">' + event.properties.Day + ', ' + event.properties.Time + '</label>' +
                     '<p class="address">' + event.properties.Address + '</p>' +
-                    '<a class="moreinfo" href="' + event.properties['Eventbrite link'] + '">More information</a>'
+                    '<a class="moreinfo" target="_blank" href="' + event.properties['Eventbrite link'] + '">More information</a>'
                 ).addTo(map);
         });
 
